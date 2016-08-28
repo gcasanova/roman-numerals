@@ -39,3 +39,29 @@ describe('RomanConverter toRoman tests', function() {
     expect(RomanConverter.toRoman(3000)).equals('MMM');
   });
 });
+
+describe('RomanConverter toArabic tests', function() {
+  it('Throws correct error when no parameter is provided', function() {
+    expect(function() {
+      RomanConverter.toArabic();
+    }).to.throw('value required');
+  });
+
+  it('Throws correct error when parameter is empty string', function() {
+    expect(function() {
+      RomanConverter.toArabic('');
+    }).to.throw('value required');
+  });
+
+  it('Throws correct error when roman number contains more than three consecutive symbols repeated', function() {
+    expect(function() {
+      RomanConverter.toArabic('IIII');
+    }).to.throw('invalid value');
+  });
+
+  it('Not throws validation error when roman number contains three consecutive symbols repeated', function() {
+    expect(function() {
+      RomanConverter.toArabic('III');
+    }).to.not.throw(Error);
+  });
+});

@@ -13,11 +13,20 @@ function RomanNumber(value) {
 
     this._arabic = value;
     this._roman = converter.toRoman(value);
+
+    // else it should be a roman number
+  } else {
+    this._roman = value;
+    this._arabic = converter.toArabic(value);
   }
 }
 
 RomanNumber.prototype.toString = function() {
   return this._roman;
+};
+
+RomanNumber.prototype.toInt = function() {
+  return this._arabic;
 };
 
 module.exports = RomanNumber;

@@ -42,4 +42,8 @@ describe('RomanNumber tests', function() {
   it('Correctly interprets 1 in roman numbers', function() {
     expect(new RomanNumber(1).toString()).equals('I');
   });
+
+  it('Correctly interprets I in arabic numbers', function() {
+    expect(new RomanNumber('I').toInt()).equals(1);
+  });
 });
