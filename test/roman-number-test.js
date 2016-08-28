@@ -20,4 +20,22 @@ describe('RomanNumber tests', function() {
       new RomanNumber('');
     }).to.throw('value required');
   });
+
+  it('Throws correct error when parameter is 0', function() {
+    expect(function() {
+      new RomanNumber(0);
+    }).to.throw('invalid range');
+  });
+
+  it('Throws correct error when parameter is 4000', function() {
+    expect(function() {
+      new RomanNumber(4000);
+    }).to.throw('invalid range');
+  });
+
+  it('Gets successfully created when passing 500 as parameter', function() {
+    expect(function() {
+      new RomanNumber(500);
+    }).to.not.throw(Error);
+  });
 });
