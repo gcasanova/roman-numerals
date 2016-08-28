@@ -38,4 +38,8 @@ describe('RomanNumber tests', function() {
       new RomanNumber(500);
     }).to.not.throw(Error);
   });
+
+  it('Correctly interprets 1 in roman numbers', function() {
+    expect(new RomanNumber(1).toString()).equals('I');
+  });
 });
