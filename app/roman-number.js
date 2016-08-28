@@ -1,6 +1,10 @@
 var converter = require('./roman-converter');
 
 function RomanNumber(value) {
+  if (!(this instanceof RomanNumber)) {
+    return new RomanNumber(value);
+  }
+
   // constructor parameter cannot be empty nor be null
   if (value === undefined || value === null | value === '')
     throw new Error('value required');
@@ -12,7 +16,7 @@ function RomanNumber(value) {
       throw new Error('invalid range');
 
     this._arabic = value;
-    this._roman = converter.toRoman(value);
+    this._roman = converter.toRoman(+value);
 
     // else it should be a roman number
   } else {

@@ -3,6 +3,11 @@ var expect = chai.expect;
 var RomanNumber = require('./../app/roman-number');
 
 describe('RomanNumber tests', function() {
+  it('Gets successfully created without new keyword', function() {
+    var romanNumber = RomanNumber(1);
+    expect(typeof romanNumber).equals('object');
+  });
+
   it('Throws correct error when parameter is not provided', function() {
     expect(function() {
       new RomanNumber();
@@ -33,6 +38,12 @@ describe('RomanNumber tests', function() {
     }).to.throw('invalid range');
   });
 
+  it('Throws correct error when parameter is 10000', function() {
+    expect(function() {
+      new RomanNumber(10000);
+    }).to.throw('invalid range');
+  });
+
   it('Gets successfully created when passing 500 as parameter', function() {
     expect(function() {
       new RomanNumber(500);
@@ -45,5 +56,11 @@ describe('RomanNumber tests', function() {
 
   it('Correctly interprets I in arabic numbers', function() {
     expect(new RomanNumber('I').toInt()).equals(1);
+  });
+
+  it('Converts to number and gets successfully created when passing "1473" as parameter', function() {
+    expect(function() {
+      new RomanNumber('1473');
+    }).to.not.throw(Error);
   });
 });
