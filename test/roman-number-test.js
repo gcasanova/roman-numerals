@@ -8,4 +8,16 @@ describe('RomanNumber tests', function() {
       new RomanNumber();
     }).to.throw('value required');
   });
+
+  it('Throws correct error when parameter is null', function() {
+    expect(function() {
+      new RomanNumber(null);
+    }).to.throw('value required');
+  });
+
+  it('Throws correct error when parameter is an empty string', function() {
+    expect(function() {
+      new RomanNumber('');
+    }).to.throw('value required');
+  });
 });
