@@ -28,6 +28,20 @@ function toArabic(sRomanNumeral) {
   if (/(.)\1\1\1/.test(sRomanNumeral)) {
     throw new Error('invalid value');
   }
+
+  var result = 0;
+  for (var i = 0; i <= decimal.length; i++) {
+    while (sRomanNumeral.indexOf(roman[i]) === 0) {
+      result += decimal[i];
+      sRomanNumeral = sRomanNumeral.replace(roman[i], '');
+    }
+  }
+
+  // roman number should be empty now
+  if (sRomanNumeral.length)
+    throw new Error('invalid value');
+
+  return result;
 }
 
 module.exports.toArabic = toArabic;
